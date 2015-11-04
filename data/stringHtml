@@ -1,0 +1,46 @@
+using System;
+namespace VYD06102015
+{
+    class StringOp
+    {
+        public string[] seperate(string exp)
+        {
+            string[] result = exp.Trim().Split(new string[] { "<",">","\n", "\r\n"}, 
+                StringSplitOptions.RemoveEmptyEntries);
+            return result;
+        }
+        public bool isTag(string val)
+        {
+            if (val.StartsWith( "html")||val.StartsWith("a class") || val.StartsWith("a title")
+                || val.StartsWith("b style") || val == "span" || val == "o:p" 
+                || val.StartsWith("a href") || val.StartsWith("div") || val == "title" 
+                || val.StartsWith("body lang") || val == "head" || val == "p" || val.StartsWith("span class") 
+                || val.StartsWith("span style") || val.StartsWith("span id") || val.StartsWith("span tabindex") || val == "body"
+                ||val=="center"||val.StartsWith("h1") || val.StartsWith("p style") || val.StartsWith("p class") || val == "style" 
+                || val == "tr" || val == "table" || val == "th" || val.StartsWith("p id") || val.StartsWith("p align")
+                ||val.StartsWith("td width")|| val.StartsWith("tr style")|| val.StartsWith("table style")|| val.StartsWith("tbody id")
+                ||val.StartsWith("tr id"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool isCloseTag(string val)
+        {
+            if (val == "/html" || val == "/o:p" || val == "/b" || val == "/a" || val == "/div"
+                || val == "/title" || val == "/body" || val == "/head" || val == "/p"
+                || val == "/span" || val == "/center" || val == "/h1" || val == "/style" || val == "/tr"
+                || val == "/table" || val == "/th")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+}
