@@ -1,0 +1,36 @@
+using System;
+
+namespace VYD06102015
+{
+    class StackOp<T> where T:IComparable
+    {
+       public bool htmlControl(string[] htmlTxt)
+        {
+            StringOp stOp = new StringOp();
+            Stack<string> tagStack = new Stack<string>(htmlTxt.Length);.
+            for (int i = 0; i < htmlTxt.Length; i++)
+            {
+                if(stOp.isTag(htmlTxt[i]))
+                {
+                     tagStack.Push(htmlTxt[i]);
+                     
+                }
+                else if(stOp.isCloseTag(htmlTxt[i]))
+                    
+                {
+                    string tag = tagStack.Pop();
+                    string[] htmlTag = tag.Split(' ');
+                    tag = htmlTag[0];
+                    
+                    if (!htmlTxt[i].Contains(tag)) 
+                    {
+                        Console.Write("Bu tag kapatilmamiş : ");
+                        Console.Write("<" + tag + "> " + "\n");
+                        return false;
+                    }
+                }
+            }
+            return true; 
+        }
+    }
+}
